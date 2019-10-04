@@ -1,5 +1,6 @@
 from flask import Flask
 from routes.swipes import swipe_route
+from flask_pymongo import PyMongo #connect to mongo DB
 
 app = Flask(__name__)
 
