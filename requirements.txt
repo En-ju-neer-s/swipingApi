@@ -1,3 +1,3 @@
 Flask
-Pymongo
 flask_pymongo
+mongoengine

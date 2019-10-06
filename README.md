@@ -8,8 +8,8 @@ For this project you need python 3.
 The packages are:
 
 - Flask
-- Pymongo
 - flask_pymongo
+- mongoengine
 
 # How to run the project
 

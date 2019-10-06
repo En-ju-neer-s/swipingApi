@@ -6,6 +6,12 @@ from flask_pymongo import PyMongo #connect to mongo DB
 
 app = Flask(__name__)
 
+# Setup the mongoDB
+app.config["MONGO_DBNAME"] = "swipingApi"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/swiper"
+# Add mongo to server
+mongo = PyMongo(app)
+
 #register routes
 app.register_blueprint(swipe_route, url_prefix='/swipe')
 app.register_blueprint(user_route, url_prefix='/user')
