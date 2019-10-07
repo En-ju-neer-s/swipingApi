@@ -18,8 +18,8 @@ def returnTitles():
         return dumps(collection.find({})), 200
     else:  # check for post with username and everything
         id = request.json['id']  # id from the post with userid
-        print(id)
-        titles = list(binarySet.aggregate([
+
+        titles = list(binarySet.aggregate([  # the list is to transform the cursor to a list
             {'$match': {'userId': id}},
             {'$group':
                 {
