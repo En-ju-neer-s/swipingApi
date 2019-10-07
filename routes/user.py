@@ -19,8 +19,9 @@ def userCreate():
                 return 'Username bestaat al', 400
             else:
                 userObject = request.json
-                userObject['score'] = 0
+                userObject['strikes'] = 0
                 userObject['seenTitles'] = []
+                userObject['id'] = request.json['id']
 
                 collection.insert_one(userObject)
                 return 'success', 201
