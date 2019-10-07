@@ -18,8 +18,9 @@ def returnTitles():
         return dumps(collection.find({})), 200
     else:  # check for post with username and everything
         id = request.json['id']
-
-        titles = db.binarySet.aggregate([
+        print(id)
+        titles = list(binarySet.aggregate([
+            {'$match': {'userId': id}},
             {'$group':
                 {
                     '_id': 0,
@@ -28,11 +29,9 @@ def returnTitles():
                     }
                 }
              }
-        ])
+        ]))[0]['titleKeys']  # get only list of key
 
-        for test in titles:
-            print(test)
-            print('asdasd')
+        print((titles))
 
         title = collectionTitles.aggregate([
             {'$sample': {'size': 1}},
