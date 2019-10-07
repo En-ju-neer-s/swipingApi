@@ -31,11 +31,10 @@ def returnTitles():
              }
         ]))[0]['titleKeys']  # get only list of key
 
-        print((titlesSeen))
+    title = collectionTitles.aggregate([
+        {'$match': {'primary_key': {'$nin': titlesSeen}}},
+        {'$sample': {'size': 1}},
+        {'$project': {'title': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'timestamp': 1, '_id': 0}}
+    ])
 
-        title = collectionTitles.aggregate([
-            {'$sample': {'size': 1}},
-            {'$project': {'title': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'timestamp': 1, '_id': 0}}
-        ])
-
-        return dumps(title), 200
+    return dumps(title), 200
