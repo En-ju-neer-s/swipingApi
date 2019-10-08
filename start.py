@@ -23,6 +23,7 @@ app.register_blueprint(title_route, url_prefix='/title')
 # initial route
 @app.route('/')
 def hello_world():
+    # TODO: return a json file with all the data and the functions
     return 'Welcome at the swiping api. Made by the enjuneers!'
 
 
