@@ -2,13 +2,12 @@
 from flask import Blueprint, request
 from flask_pymongo import MongoClient
 
-
 # connect to mongo
 client = MongoClient('mongodb://localhost:27017/')
 db = client.swiper
 
 swipe_route = Blueprint('swipe_route', __name__)
-@swipe_route.route('/', methods=['GET', 'POST'])
+@swipe_route.route('/', methods=['POST'])
 def swipes():
     if request.method == 'POST':
         # Basis validation for the request
@@ -24,5 +23,3 @@ def swipes():
             return 'saved', 201
         else:
             return 'POST OBJECT NOT RIGHT', 403
-    else:
-        return 'Welcome to the get'
