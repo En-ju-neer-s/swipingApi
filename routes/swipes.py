@@ -11,13 +11,14 @@ swipe_route = Blueprint('swipe_route', __name__)
 @swipe_route.route('/', methods=['GET', 'POST'])
 def swipes():
     if request.method == 'POST':
-
+        # Basis validation for the request
         if ('userId' in request.json and request.json['userId'] != '') and ('primaryKey' in request.json and request.json['primaryKey'] != '') and ('clickbait' in request.json and type(request.json['clickbait']) == int):
             binaryObject = {}
+            # full the object with all the data
             for objectName in request.json:
                 binaryObject[objectName] = request.json[objectName]
                 pass
-
+            # insert into the DB
             db.binary.insert_one(binaryObject)
 
             return 'saved', 201
