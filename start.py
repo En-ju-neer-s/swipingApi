@@ -1,6 +1,7 @@
 from flask import Flask
 from routes.swipes import swipe_route
 from routes.user import user_route
+from bson.json_util import dumps
 from routes.users import users_route
 from routes.title import title_route
 from flask_pymongo import PyMongo  # connect to mongo DB

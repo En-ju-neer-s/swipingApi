@@ -17,24 +17,27 @@ def returnTitles():
     if request.method == 'GET':  # return all
         return dumps(collection.find({})), 200
     else:  # check for post with userid and everything
-        id = request.json['id']  # id from the post with userid
+        if 'id' in request.json:
+            id = request.json.has_item('id')  # id from the post with userid
 
-        titlesSeen = list(binarySet.aggregate([  # the list is to transform the cursor to a list
-            {'$match': {'userId': id}},
-            {'$group':
-                {
-                    '_id': 0,
-                    'titleKeys': {
-                        '$push': '$primary_key'
-                    }
-                }
-             }
-        ]))[0]['titleKeys']  # get only list of key
+            titlesSeen = list(binarySet.aggregate([  # the list is to transform the cursor to a list
+                {'$match': {'userId': id}},
+                {'$group':
+                 {
+                     '_id': 0,
+                     'titleKeys': {
+                         '$push': '$primary_key'
+                     }
+                 }
+                 }
+            ]))[0]['titleKeys']  # get only list of key
 
-    title = collectionTitles.aggregate([
-        {'$match': {'primary_key': {'$nin': titlesSeen}}},
-        {'$sample': {'size': 1}},
-        {'$project': {'title': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'timestamp': 1, '_id': 0}}
-    ])
+            title = collectionTitles.aggregate([
+                {'$match': {'primary_key': {'$nin': titlesSeen}}},
+                {'$sample': {'size': 1}},
+                {'$project': {'title': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'timestamp': 1, '_id': 0}}
+            ])
 
-    return dumps(title), 200
+            return dumps(title), 200
+        else:
+            return 'id not filled', 403
