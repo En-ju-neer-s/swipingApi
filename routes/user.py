@@ -14,18 +14,14 @@ def userCreate():
     if request.method == 'POST':
 
         # Check if object is complete
-        if request.json['username'] and type(request.json['username']) == str:
-            if collection.find({'user': request.json['username']}).count != 0:
-                return 'Username bestaat al', 400
-            else:
-                userObject = request.json
-                userObject['strikes'] = 0
-                userObject['seenTitles'] = []
-                userObject['id'] = request.json['id']
+        if 'username' in request.json and type(request.json['username']) == str and collection.find({'username': request.json['username']}).count() == 0:
+            userObject = request.json
+            userObject['strikes'] = 0
+            userObject['id'] = request.json['id']
 
-                collection.insert_one(userObject)
-                return 'success', 201
+            collection.insert_one(userObject)
+            return 'success', 201
         else:
-            return 'POST REQUEST KLOPT NIET', 400
+            return 'POST BODY NOT COMPLETE', 400
     else:
         return 'Welcome to the post user'
