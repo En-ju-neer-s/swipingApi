@@ -17,8 +17,8 @@ def returnTitles():
     if request.method == 'GET':  # return all
         return dumps(collection.find({})), 200
     else:  # check for post with userid and everything
-        if 'id' in request.json:
-            id = request.json.has_item('id')  # id from the post with userid
+        if 'id' in request.json and request.json['id'] != '':
+            id = request.json['id']  # id from the post with userid
 
             titlesSeen = list(binarySet.aggregate([  # the list is to transform the cursor to a list
                 {'$match': {'userId': id}},
