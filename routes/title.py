@@ -15,7 +15,7 @@ binarySet = db.binary
 @title_route.route('/', methods=['GET', 'POST'])
 def returnTitles():
     if request.method == 'GET':  # return all
-        return dumps(collection.find({})), 200
+        return dumps(collectionTitles.find({})), 200
     else:  # check for post with userid and everything
         if 'id' in request.json and request.json['id'] != '':
             id = request.json['id']  # id from the post with userid
@@ -23,12 +23,12 @@ def returnTitles():
                 titlesSeen = list(binarySet.aggregate([  # the list is to transform the cursor to a list
                     {'$match': {'userId': id}},
                     {'$group':
-                     {
-                         '_id': 0,
-                         'titleKeys': {
-                             '$push': '$primary_key'
-                         }
-                     }
+                        {
+                            '_id': 0,
+                            'titleKeys': {
+                                '$push': '$primary_key'
+                            }
+                        }
                      }
                 ]))[0]['titleKeys']  # get only list of key
 
