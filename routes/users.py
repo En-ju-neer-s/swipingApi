@@ -12,14 +12,13 @@ collection = db.binary
 @users_route.route('/', methods=['GET'])
 def topUsers():
     if request.method == 'GET':
-
         topTen = collection.aggregate([
             {
-                '$group': {
+                '$group': {  # Group them together based on userId
                     '_id': '$userId',
-                    'count': {'$sum': 1}
+                    'count': {'$sum': 1}  # count per user
                 }},
-            {'$sort': {'count': -1}},
+            {'$sort': {'count': -1}},  # return them descending
             {'$limit': 10}
         ])
 
