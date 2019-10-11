@@ -26,7 +26,7 @@ app.register_blueprint(title_route, url_prefix='/title')
 def hello_world():
     return dumps({
         "made by": "This api is made by the enjuneers in assignment of ACED.",
-        "Creator": {
+        "Creators": {
             "frontend": [
                 "Robin Treur, robintreur@gmail.com",
                 "Mark Vonk, markjhvonk@gmail.com"
