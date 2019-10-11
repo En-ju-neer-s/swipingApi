@@ -28,7 +28,7 @@ def hello_world():
         "made by": "This api is made by the enjuneers in assignment of ACED.",
         "Creator": {
             "frontend": [
-                "Robin Treur",
+                "Robin Treur, robintreur@gmail.com",
                 "Mark Vonk, markjhvonk@gmail.com"
             ],
             "backend": "Roel Voordendag, rvoordendag@gmail.com"
