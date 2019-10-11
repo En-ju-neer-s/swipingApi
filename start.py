@@ -1,4 +1,5 @@
-from flask import Flask
+import os
+from flask import Flask, json, url_for
 from routes.swipes import swipe_route
 from routes.user import user_route
 from bson.json_util import dumps
@@ -23,8 +24,22 @@ app.register_blueprint(title_route, url_prefix='/title')
 # initial route
 @app.route('/')
 def hello_world():
-    # TODO: return a json file with all the data and the functions
-    return 'Welcome at the swiping api. Made by the enjuneers!'
+    return dumps({
+        "made by": "This api is made by the enjuneers in assignment of ACED.",
+        "Creator": {
+            "frontend": [
+                "Robin Treur",
+                "Mark Vonk, markjhvonk@gmail.com"
+            ],
+            "backend": "Roel Voordendag, rvoordendag@gmail.com"
+        },
+        "routes": [
+            "/user, POST",
+            "/users, GET",
+            "/title, POST",
+            "/swipe, POST"
+        ]
+    })
 
 
 if __name__ == "__main__":
