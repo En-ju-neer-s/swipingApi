@@ -17,7 +17,7 @@ def userCreate():
         if 'username' in request.json and type(request.json['username']) == str and collection.find({'username': request.json['username']}).count() == 0:
             userObject = request.json
             userObject['strikes'] = 0
-            userObject['id'] = request.json['id']
+            userObject['userId'] = request.json['id']
 
             collection.insert_one(userObject)
             return 'success', 201
