@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 # Setup the mongoDB
 app.config["MONGO_DBNAME"] = "swiper"
-app.config["MONGO_URI"] = "mongodbd://localhost:27017/swiper"
+app.config["MONGO_URI"] = "mongodb:///localhost:27017/swiper"
 # Add mongo to server
 mongo = PyMongo(app)
 
