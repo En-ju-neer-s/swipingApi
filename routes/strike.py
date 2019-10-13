@@ -8,7 +8,7 @@ strike_route = Blueprint('strike_route', __name__)
 @strike_route.route('/', methods=['PATCH'])
 def addStrike():
     if request.json:
-        if ('userId' in request.json and request.json['userId'] != ''):
+        if ('userId' in request.json and request.json['userId'] != '' and db.users.find({'userId': request.json['userId']}).count() != 0):
 
             db.users.update(
                 {'userId': request.json['userId']},
