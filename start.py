@@ -7,8 +7,10 @@ from routes.users import users_route
 from routes.strike import strike_route
 from routes.title import title_route
 from flask_pymongo import PyMongo  # connect to mongo DB
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Setup the mongoDB
 app.config["MONGO_DBNAME"] = "swiper"
