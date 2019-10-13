@@ -41,7 +41,7 @@ def hello_world():
             "/user, POST",
             "/users, GET",
             "/title, POST",
-            "/swipe, POST"
+            "/swipe, POST",
             "/strike, PUT"
         ]
     })
