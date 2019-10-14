@@ -15,7 +15,7 @@ binarySet = db.binary
 @title_route.route('/', methods=['GET', 'POST'])
 def returnTitles():
     if request.method == 'GET':  # return all
-        return dumps(collectionTitles.find({})), 200
+        return 'GET ALL THE THE TITLES', 200
     else:  # check for post with userid and everything
         if 'id' in request.json and request.json['id'] != '':
             id = request.json['id']  # id from the post with userid
