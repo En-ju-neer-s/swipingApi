@@ -1,7 +1,8 @@
 from flask import Blueprint, request
 from flask_pymongo import MongoClient
 from bson.json_util import dumps
-from .config import username, password
+username = ''
+password = ''
 
 users_route = Blueprint('users_route', __name__)
 
