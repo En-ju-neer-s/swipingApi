@@ -1,7 +1,10 @@
 from flask import Blueprint, request
 from flask_pymongo import MongoClient
+from ..config import config
 
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient('mongodb://localhost:27017/',
+                     username=config.username,
+                     passsword=config.password)
 db = client.swiper
 
 strike_route = Blueprint('strike_route', __name__)

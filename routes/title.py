@@ -5,7 +5,9 @@ from flask_pymongo import MongoClient
 title_route = Blueprint('title_route', __name__)
 
 # connect with mongo
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient('mongodb://localhost:27017/',
+                     username=config.username,
+                     passsword=config.password)
 db = client.swiper
 # get collectoins
 collectionTitles = db.testTitles

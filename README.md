@@ -10,6 +10,7 @@ The packages are:
 - Flask
 - flask_pymongo
 - mongoengine
+- flask_cors
 
 # How to run the project
 
