@@ -1,12 +1,12 @@
 # File to fix count the swipes
 from flask import Blueprint, request
 from flask_pymongo import MongoClient
-from ..config import config
+from .config import username, password
 
 # connect to mongo
 client = MongoClient('mongodb://localhost:27017/',
-                     username=config.username,
-                     passsword=config.password)
+                     username=username,
+                     password=password)
 db = client.swiper
 
 swipe_route = Blueprint('swipe_route', __name__)
