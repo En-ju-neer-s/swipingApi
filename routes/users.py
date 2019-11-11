@@ -4,7 +4,9 @@ from bson.json_util import dumps
 
 users_route = Blueprint('users_route', __name__)
 
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient('mongodb://localhost:27017/',
+                     username=config.username,
+                     passsword=config.password)
 db = client.swiper
 collection = db.binary
 
