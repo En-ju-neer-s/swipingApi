@@ -1,6 +1,7 @@
 from flask import request, Blueprint, json
 from bson.json_util import dumps
 from flask_pymongo import MongoClient
+from ..config import config
 
 title_route = Blueprint('title_route', __name__)
 

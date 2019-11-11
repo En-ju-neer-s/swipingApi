@@ -1,5 +1,6 @@
 from flask import Blueprint, request
 from flask_pymongo import MongoClient
+from ..config import config
 
 user_route = Blueprint('user_route', __name__)
 
