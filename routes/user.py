@@ -1,14 +1,10 @@
 from flask import Blueprint, request
 from flask_pymongo import MongoClient
-username = ''
-password = ''
 
 user_route = Blueprint('user_route', __name__)
 
 # the client to whe we connect
-client = MongoClient('mongodb://localhost:27017/',
-                     username=username,
-                     password=password)
+client = MongoClient('mongodb://localhost:27017/')
 db = client.swiper
 collection = db.users
 
