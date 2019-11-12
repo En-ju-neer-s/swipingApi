@@ -14,7 +14,7 @@ def swipes():
         if ('userId' in request.json and request.json['userId'] != '') and ('primaryKey' in request.json and request.json['primaryKey'] != '') and ('clickbait' in request.json and type(request.json['clickbait']) == int):
             # more validiont
             if db.users.find({'userId': request.json['userId']}).count() == 0 or db.testTitles.find({'primary_key': request.json['primaryKey']}).count() == 0:
-                return 'not found', 404
+                return 'User not Found', 404
 
             binaryObject = {}
             # full the object with all the data
