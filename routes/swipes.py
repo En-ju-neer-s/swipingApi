@@ -1,6 +1,8 @@
 # File to fix count the swipes
 from flask import Blueprint, request
 from flask_pymongo import MongoClient
+import datetime
+now = datetime.datetime.now()
 
 # connect to mongo
 client = MongoClient('mongodb://localhost:27017/')
@@ -21,6 +23,8 @@ def swipes():
             for objectName in request.json:
                 binaryObject[objectName] = request.json[objectName]
                 pass
+
+            binaryObject['timestamp'] = now.strftime('%Y-%m-%d')
             # insert into the DB
             db.binary.insert_one(binaryObject)
 

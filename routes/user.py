@@ -1,5 +1,7 @@
 from flask import Blueprint, request
 from flask_pymongo import MongoClient
+import datetime
+now = datetime.datetime.now()
 
 user_route = Blueprint('user_route', __name__)
 
@@ -18,6 +20,7 @@ def userCreate():
             userObject = request.json
             userObject['strikes'] = 0
             userObject['userId'] = request.json['id']
+            userObject['timestamp'] = now.strftime('%Y-%m-%d')
 
             collection.insert_one(userObject)
             return 'success', 201
