@@ -50,7 +50,13 @@ def hello_world():
             "/users, GET",
             "/title, POST",
             "/swipe, POST",
-            "/strike, PUT"
+            "/strike, PUT",
+        ],
+        'routes dashboard': [
+            '/dashBoard',
+            '/getSwipes, Get all swipes with date',
+            '/graphUsers, Get all swipes with users and data',
+            '/stats, get the general stats'
         ]
     })
 
