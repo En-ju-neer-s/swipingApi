@@ -39,7 +39,7 @@ def returnTitles():
                     {'$project': {'title': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'timestamp': 1, '_id': 0}}
                 ])
             else:
-                title = collectionTitles.aggregate([{'$sample': {'size': 1}}, {'$project': {'title': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'timestamp': 1, '_id': 0}}])
+                title = collectionTitles.aggregate([{'$sample': {'size': 1}}, {'$project': {'title': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'og-title': 1, 'timestamp': 1, '_id': 0}}])
 
             return dumps(title), 200
         else:
