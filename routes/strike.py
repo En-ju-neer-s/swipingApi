@@ -3,6 +3,7 @@ from flask_pymongo import MongoClient
 username = ''
 password = ''
 
+
 client = MongoClient('mongodb://localhost:27017/',
                      username=username,
                      password=password)

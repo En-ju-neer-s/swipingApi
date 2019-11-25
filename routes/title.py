@@ -10,6 +10,7 @@ title_route = Blueprint('title_route', __name__)
 client = MongoClient('mongodb://localhost:27017/',
                      username=username,
                      password=password)
+
 db = client.swiper
 # get collectoins
 collectionTitles = db.testTitles
@@ -42,7 +43,7 @@ def returnTitles():
                     {'$project': {'title': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'timestamp': 1, '_id': 0}}
                 ])
             else:
-                title = collectionTitles.aggregate([{'$sample': {'size': 1}}, {'$project': {'title': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'timestamp': 1, '_id': 0}}])
+                title = collectionTitles.aggregate([{'$sample': {'size': 1}}, {'$project': {'title': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'og-title': 1, 'timestamp': 1, '_id': 0}}])
 
             return dumps(title), 200
         else:

@@ -5,7 +5,7 @@ username = ''
 password = ''
 
 users_route = Blueprint('users_route', __name__)
-
+# setup connection
 client = MongoClient('mongodb://localhost:27017/',
                      username=username,
                      password=password)
