@@ -1,10 +1,15 @@
 from flask import Blueprint, request
 from flask_pymongo import MongoClient
 from bson.json_util import dumps
+username = ''
+password = ''
 
 fake_route = Blueprint('fake_route', __name__)
 
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient('mongodb://localhost:27017/',
+                     username=username,
+                     password=password)
+
 db = client.swiper
 
 
