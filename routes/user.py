@@ -3,8 +3,8 @@ from flask_pymongo import MongoClient
 import datetime
 
 now = datetime.datetime.now()
-username = 'ubuntu-0927895'
-password = '85tHc7'
+username = ''
+password = ''
 
 user_route = Blueprint('user_route', __name__)
 

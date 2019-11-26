@@ -4,8 +4,8 @@ from flask_pymongo import MongoClient
 import datetime
 
 now = datetime.datetime.now()
-username = 'ubuntu-0927895'
-password = '85tHc7'
+username = ''
+password = ''
 
 # connect to mongo
 client = MongoClient('mongodb://localhost:27017/',

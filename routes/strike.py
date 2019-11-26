@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_pymongo import MongoClient
-username = 'ubuntu-0927895'
-password = '85tHc7'
+username = ''
+password = ''
 
 
 client = MongoClient('mongodb://localhost:27017/',
