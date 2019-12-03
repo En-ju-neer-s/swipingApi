@@ -3,7 +3,7 @@ from flask import Blueprint, request
 from flask_pymongo import MongoClient
 import datetime
 
-now = datetime.datetime.now()
+now = datetime.datetime.utcnow()
 username = ''
 password = ''
 

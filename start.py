@@ -9,6 +9,7 @@ from routes.title import title_route
 from routes.dashBoardRoutes.stats import stats_route
 from routes.dashBoardRoutes.graphsDataSwipes import graph_swipes_route
 from routes.dashBoardRoutes.graphsDataUsers import graph_swiper_users
+from routes.dashBoardRoutes.swipesStats import swipesStats
 from routes.fakeArticles import fake_route
 from flask_pymongo import PyMongo  # connect to mongo DB
 from flask_cors import CORS
@@ -31,6 +32,7 @@ app.register_blueprint(strike_route, url_prefix='/strike')
 app.register_blueprint(stats_route, url_prefix='/dashboard')
 app.register_blueprint(graph_swipes_route, url_prefix='/dashboard')
 app.register_blueprint(graph_swiper_users, url_prefix='/dashboard')
+app.register_blueprint(swipesStats, url_prefix='/dashboard')
 app.register_blueprint(fake_route, url_prefix='/fakeRoute')
 
 # initial route
