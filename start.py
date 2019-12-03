@@ -59,6 +59,7 @@ def hello_world():
             '/graphSwipes Swipes, Get all swipes with date',
             '/graphUsers, Get all swipes with users and data',
             '/stats, get the general stats'
+            '/swipesStats stats for the main item'
         ]
     })
 
