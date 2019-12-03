@@ -56,7 +56,7 @@ def hello_world():
         ],
         'routes dashboard': [
             '/dashBoard',
-            '/getSwipes, Get all swipes with date',
+            '/graphSwipes Swipes, Get all swipes with date',
             '/graphUsers, Get all swipes with users and data',
             '/stats, get the general stats'
         ]
