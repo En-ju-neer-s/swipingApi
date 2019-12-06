@@ -1,11 +1,10 @@
 from flask import Blueprint
-from flask_pymongo import MongoClient
 from bson.json_util import dumps
+from ..connection import client
 
 swipesStats = Blueprint('swipesStats', __name__)
 
-# Connect to mongo
-client = MongoClient('mongodb://localhost:27017/')
+# Connect to client
 db = client.swiper
 
 

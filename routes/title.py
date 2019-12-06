@@ -1,16 +1,10 @@
 from flask import request, Blueprint, json
 from bson.json_util import dumps
-from flask_pymongo import MongoClient
-username = ''
-password = ''
+from .connection import client
 
 title_route = Blueprint('title_route', __name__)
 
-# connect with mongo
-client = MongoClient('mongodb://localhost:27017/',
-                     username=username,
-                     password=password)
-
+# Connection to collection
 db = client.swiper
 # get collectoins
 collectionTitles = db.testTitles
