@@ -106,4 +106,4 @@ venv.bak/
 #Ignore the config file
 config/
 
-/routes/connection
+/routes/connection.py
