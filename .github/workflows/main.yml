@@ -28,7 +28,6 @@ jobs:
         host: ${{ secrets.HOST }}
         username: githubcicd
         password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
         script: | 
           sudo /bin/systemctl restart swipingApi.service
           sudo /bin/systemctl status swipingApi.service
