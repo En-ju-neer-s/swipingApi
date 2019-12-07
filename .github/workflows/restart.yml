@@ -1,0 +1,19 @@
+name: Restart API service
+
+jobs:
+  deploy:
+    name: restart service
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Restarting api service
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        script: | 
+          sudo /bin/systemctl restart swipingApi.service
+          sleep 10
+          sudo /bin/systemctl status swipingApi.service
