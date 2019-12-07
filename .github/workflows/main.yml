@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: project files
+      run: ls -a
+    - name: Copy prroject to host
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: ./
+        remote: ../ubuntu-0927895/swipingApi
+        host: ${{ secrets.HOST }}
+        username: githubcicd
+        password: ${{ secrets.PASSWORD }}
+    - name: Restarting api service
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: githubcicd
+        password: ${{ secrets.PASSWORD }}
+        script: | 
+          sudo /bin/systemctl restart swipingApi.service
+          sudo /bin/systemctl status swipingApi.service
