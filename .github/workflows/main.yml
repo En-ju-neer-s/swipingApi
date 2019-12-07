@@ -29,6 +29,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         script: | 
-          sudo systemctl restart swipingApi.service
+          sudo systemctl restart swipingApi
           sleep 10
-          sudo systemctl status swipingApi.service
+          sudo systemctl status swipingApi
