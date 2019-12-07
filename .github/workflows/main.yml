@@ -26,8 +26,9 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
-        username: githubcicd
+        username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         script: | 
-          sudo /bin/systemctl restart swipingApi.service
-          sudo /bin/systemctl status swipingApi.service
+          sudo systemctl restart swipingApi
+          sleep 10
+          sudo systemctl status swipingApi
