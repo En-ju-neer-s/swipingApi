@@ -1,12 +1,10 @@
 from flask import Blueprint
-from flask_pymongo import MongoClient
+from ..connection import client
 from bson.json_util import dumps
-
 
 stats_route = Blueprint('stats_route', __name__)  # set route
 
-# Connect met mongo
-client = MongoClient('mongodb://localhost:27017/')
+# Connect met collection
 db = client.swiper
 
 

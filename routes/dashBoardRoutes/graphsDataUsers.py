@@ -1,12 +1,11 @@
 
 from flask import Blueprint
-from flask_pymongo import MongoClient
 from bson.json_util import dumps
+from ..connection import client
 
 graph_swiper_users = Blueprint('graph_swiper_users', __name__)
 
 # Connect to mongo
-client = MongoClient('mongodb://localhost:27017/')
 db = client.swiper
 
 

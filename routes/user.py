@@ -1,12 +1,12 @@
 from flask import Blueprint, request
-from flask_pymongo import MongoClient
+from .connection import client
 import datetime
-now = datetime.datetime.now()
+
+now = datetime.datetime.utcnow()
 
 user_route = Blueprint('user_route', __name__)
 
-# the client to whe we connect
-client = MongoClient('mongodb://localhost:27017/')
+# Connect to collection
 db = client.swiper
 collection = db.users
 
