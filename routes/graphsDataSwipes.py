@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask_pymongo import MongoClient
 from bson.json_util import dumps
-from ..connection import client
+from .connection import client
 
 graph_swipes_route = Blueprint('graph_swipes_route', __name__)
 
