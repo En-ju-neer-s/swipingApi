@@ -1,7 +1,7 @@
 
 from flask import Blueprint
 from bson.json_util import dumps
-from ..connection import client
+from .connection import client
 
 graph_swiper_users = Blueprint('graph_swiper_users', __name__)
 
