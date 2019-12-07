@@ -20,7 +20,7 @@ jobs:
         local: ./
         remote: ../ubuntu-0927895/swipingApi
         host: ${{ secrets.HOST }}
-        username: githubcicd
+        username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
     - name: Restarting api service
       uses: appleboy/ssh-action@master
