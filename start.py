@@ -15,6 +15,7 @@ from routes.dashBoardRoutes.graphsDataUsers import graph_swiper_users
 from routes.dashBoardRoutes.swipesStats import swipesStats
 # admin routes
 from routes.adminPrompt.uploadJson import upload_route
+from routes.adminPrompt.getNewsSources import news_source_route
 # Mongo imports
 from flask_pymongo import PyMongo  # connect to mongo DB
 from flask_cors import CORS
@@ -34,12 +35,13 @@ app.register_blueprint(user_route, url_prefix='/user')
 app.register_blueprint(users_route, url_prefix='/users')
 app.register_blueprint(title_route, url_prefix='/title')
 app.register_blueprint(strike_route, url_prefix='/strike')
+app.register_blueprint(fake_route, url_prefix='/fakeRoute')
 # Dasboard routes
 app.register_blueprint(stats_route, url_prefix='/dashboard')
 app.register_blueprint(graph_swipes_route, url_prefix='/dashboard')
 app.register_blueprint(graph_swiper_users, url_prefix='/dashboard')
 app.register_blueprint(swipesStats, url_prefix='/dashboard')
-app.register_blueprint(fake_route, url_prefix='/fakeRoute')
+app.register_blueprint(news_source_route, url_prefix='/dashboard')
 # Admin routes
 app.register_blueprint(upload_route, url_prefix='/admin')
 
@@ -67,7 +69,8 @@ def hello_world():
             '/graphSwipes Swipes, Get all swipes with date',
             '/graphUsers, Get all swipes with users and data',
             '/stats, get the general stats'
-            '/swipesStats stats for the main item'
+            '/swipesStats, stats for the main item',
+            '/newsSources, to get all newssources'
         ]
     })
 
