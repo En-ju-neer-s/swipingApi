@@ -12,5 +12,5 @@ db = client.swiper
 def newsSources():
     # Return all articles
     if request.method == 'GET':
-        return(dumps(db.newsSources.find({})))
+        return(dumps(db.newsProviders.find({})))
     # TODO ADD A POST TO ADD
