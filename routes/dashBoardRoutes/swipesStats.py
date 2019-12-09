@@ -1,6 +1,6 @@
 from flask import Blueprint
 from bson.json_util import dumps
-from .connection import client
+from ..connection import client
 
 swipesStats = Blueprint('swipesStats', __name__)
 

@@ -1,4 +1,4 @@
-name: CI
+name: Deploy API
 
 on:
   push:
@@ -6,7 +6,8 @@ on:
       - master
 
 jobs:
-  build:
+  deploy:
+    name: deploy api
 
     runs-on: ubuntu-latest
 

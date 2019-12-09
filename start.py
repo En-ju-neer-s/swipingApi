@@ -6,10 +6,10 @@ from bson.json_util import dumps
 from routes.users import users_route
 from routes.strike import strike_route
 from routes.title import title_route
-from routes.stats import stats_route
-from routes.graphsDataSwipes import graph_swipes_route
-from routes.graphsDataUsers import graph_swiper_users
-from routes.swipesStats import swipesStats
+from routes.dashBoardRoutes.stats import stats_route
+from routes.dashBoardRoutes.graphsDataSwipes import graph_swipes_route
+from routes.dashBoardRoutes.graphsDataUsers import graph_swiper_users
+from routes.dashBoardRoutes.swipesStats import swipesStats
 from routes.fakeArticles import fake_route
 from flask_pymongo import PyMongo  # connect to mongo DB
 from flask_cors import CORS

@@ -1,5 +1,5 @@
 from flask import Blueprint
-from .connection import client
+from ..connection import client
 from bson.json_util import dumps
 
 stats_route = Blueprint('stats_route', __name__)  # set route
