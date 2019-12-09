@@ -13,3 +13,4 @@ def newsSources():
     # Return all articles
     if request.method == 'GET':
         return(dumps(db.newsSources.find({})))
+    # TODO ADD A POST TO ADD
