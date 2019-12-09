@@ -38,12 +38,17 @@ def swipesStatsGetter():
                     clicbaitYes = clicbaitYes + 1
                 else:
                     clicbaitNo = clicbaitNo + 1
-            test['clickbait'] = {'clicbaitYes': clicbaitYes, 'clicbaitNo': clicbaitNo}
+
+            clickbaitTotal = clicbaitYes + clicbaitNo
+            yesPercentage = clicbaitYes / clickbaitTotal
+            noPercentage = clicbaitNo / clickbaitTotal
+
+            test['clickbait'] = {'clicbaitYes': clicbaitYes, 'clicbaitNo': clicbaitNo, 'total': clickbaitTotal, 'yesPercentage': yesPercentage, 'noPercentage': noPercentage}
 
             clicbaitNo = clicbaitYes = 0
             pass
         else:
-            test['clickbait'] = {'clicbaitYes': 0, 'clicbaitNo': 0}
+            test['clickbait'] = {'clicbaitYes': 0, 'clicbaitNo': 0, 'total': 0, 'yesPercentage': 0, 'noPercentage': 0}
 
         test.pop('binaryData')
         newItems.append(test)
