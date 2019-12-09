@@ -11,7 +11,6 @@ upload_route = Blueprint('upload_route', __name__)  # set route
 db = client.swiper
 
 # TODO: ADD PASSWORD HANDLER FOR POSTING IT
-# TODO: ADD SAVING SOURCE
 
 
 @upload_route.route('/upload', methods=['post'])
@@ -34,6 +33,8 @@ def uploadRoute():
                 article['description'] = base64.b64encode(bytes(jsonObject['description'], 'utf-8')).decode('utf-8')
                 article['og-title'] = base64.b64encode(bytes(jsonObject['og-title'], 'utf-8')).decode('utf-8')
                 article['timestamp'] = jsonObject['timestamp']
+                if request.json['source'] and len(request.json['source']) > 0:  # Validation
+                    article['source'] = request.json['source']
                 articles.append(article)  # append the article to a list of articles
 
             # upload the json to mongo
