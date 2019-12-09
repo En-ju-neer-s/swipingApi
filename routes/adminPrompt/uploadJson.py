@@ -11,7 +11,6 @@ upload_route = Blueprint('upload_route', __name__)  # set route
 db = client.swiper
 
 # TODO: ADD PASSWORD HANDLER FOR POSTING IT
-# TODO: ADD SAVING SOURCE
 
 
 @upload_route.route('/upload', methods=['post'])
