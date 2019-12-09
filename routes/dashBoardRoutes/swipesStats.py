@@ -43,7 +43,7 @@ def swipesStatsGetter():
             yesPercentage = clicbaitYes / clickbaitTotal
             noPercentage = clicbaitNo / clickbaitTotal
 
-            test['clickbait'] = {'clicbaitYes': clicbaitYes, 'clicbaitNo': clicbaitNo, 'total': clickbaitTotal, 'yesPercentage': yesPercentage, 'noPercentage': noPercentage}
+            test['clickbait'] = {'yes': clicbaitYes, 'no': clicbaitNo, 'total': clickbaitTotal, 'yesPercentage': yesPercentage, 'noPercentage': noPercentage}
 
             clicbaitNo = clicbaitYes = 0
             pass
