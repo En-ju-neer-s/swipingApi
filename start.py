@@ -1,16 +1,21 @@
 import os
 from flask import Flask, json, url_for
+# Swiper Routes
 from routes.swipes import swipe_route
 from routes.user import user_route
 from bson.json_util import dumps
 from routes.users import users_route
 from routes.strike import strike_route
 from routes.title import title_route
+from routes.fakeArticles import fake_route
+# Dashboard Router
 from routes.dashBoardRoutes.stats import stats_route
 from routes.dashBoardRoutes.graphsDataSwipes import graph_swipes_route
 from routes.dashBoardRoutes.graphsDataUsers import graph_swiper_users
 from routes.dashBoardRoutes.swipesStats import swipesStats
-from routes.fakeArticles import fake_route
+# admin routes
+from routes.adminPrompt.uploadJson import upload_route
+# Mongo imports
 from flask_pymongo import PyMongo  # connect to mongo DB
 from flask_cors import CORS
 
@@ -29,11 +34,14 @@ app.register_blueprint(user_route, url_prefix='/user')
 app.register_blueprint(users_route, url_prefix='/users')
 app.register_blueprint(title_route, url_prefix='/title')
 app.register_blueprint(strike_route, url_prefix='/strike')
+# Dasboard routes
 app.register_blueprint(stats_route, url_prefix='/dashboard')
 app.register_blueprint(graph_swipes_route, url_prefix='/dashboard')
 app.register_blueprint(graph_swiper_users, url_prefix='/dashboard')
 app.register_blueprint(swipesStats, url_prefix='/dashboard')
 app.register_blueprint(fake_route, url_prefix='/fakeRoute')
+# Admin routes
+app.register_blueprint(upload_route, url_prefix='/admin')
 
 # initial route
 @app.route('/')
