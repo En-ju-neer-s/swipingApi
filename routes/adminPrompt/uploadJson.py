@@ -1,6 +1,5 @@
 import json
-import hashlib
-import base64
+from hashlib import sha256
 from flask import Blueprint, request
 from ..connection import client
 from bson.json_util import dumps
@@ -37,6 +36,7 @@ def uploadRoute():
                     if request.json['source'] and len(request.json['source']) > 0:  # Validation
                         article['source'] = request.json['source']
                     articles.append(article)  # append the article to a list of articles
+                    # TODO ADD WHO UPLOADED IT
 
                 # upload the json to mongo
                 db.fakeTitles.insert(json.loads(dumps(articles)))
