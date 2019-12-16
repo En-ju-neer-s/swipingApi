@@ -16,9 +16,15 @@ def topUsers():
             {
                 '$group': {  # Group them together based on userId
                     '_id': '$userId',
-                    'name': users.find( { 'userId': '$userId' }, { username: 1, _id: 0 } ),
+#                     'name': users.find( { 'userId': '$userId' }, { username: 1, _id: 0 } ),
                     'count': {'$sum': 1}  # count per user
                 }},
+            { $lookup: {
+                from: "users",
+                localField: "userId",    // field in the orders collection
+                foreignField: "userId",  // field in the items collection
+                as: "user"
+            }},
             {'$sort': {'count': -1}},  # return them descending
             {'$limit': 10}
         ])
