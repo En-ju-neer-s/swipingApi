@@ -31,7 +31,7 @@ def loginRoute():
         # Set collection
         collection = db.apiKey
 
-        collection.create_index('inserted at: ' + format(datetime.datetime.utcnow()), expireAfterSeconds=10)
+        collection.create_index('inserted at: ' + format(datetime.datetime.utcnow()), expireAfterSeconds=60)
         collection.insert_one({'apiKey': apiKey, 'user': request.json['username'], "inserted": datetime.datetime.utcnow()})
 
         return dumps({'success': True, 'message': 'You are logged in', 'apiKey': 'apikey'}), 200
