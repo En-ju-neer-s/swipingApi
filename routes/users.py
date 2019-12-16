@@ -15,6 +15,7 @@ def topUsers():
             {
                 '$group': {  # Group them together based on userId
                     '_id': '$userId',
+                    'name': '$username',
                     'count': {'$sum': 1}  # count per user
                 }},
             {'$sort': {'count': -1}},  # return them descending
