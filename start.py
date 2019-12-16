@@ -16,6 +16,7 @@ from routes.dashBoardRoutes.swipesStats import swipesStats
 # admin routes
 from routes.adminPrompt.uploadJson import upload_route
 from routes.adminPrompt.getNewsSources import news_source_route
+from routes.adminPrompt.login import login_route
 # Mongo imports
 from flask_pymongo import PyMongo  # connect to mongo DB
 from flask_cors import CORS
@@ -44,6 +45,7 @@ app.register_blueprint(swipesStats, url_prefix='/dashboard')
 app.register_blueprint(news_source_route, url_prefix='/dashboard')
 # Admin routes
 app.register_blueprint(upload_route, url_prefix='/admin')
+app.register_blueprint(login_route, url_prefix='/admin')
 
 # initial route
 @app.route('/')
