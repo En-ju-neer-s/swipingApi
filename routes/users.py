@@ -19,11 +19,11 @@ def topUsers():
 #                     'name': users.find( { 'userId': '$userId' }, { username: 1, _id: 0 } ),
                     'count': {'$sum': 1}  # count per user
                 }},
-            { $lookup: {
-                from: "users",
-                localField: "userId",    // field in the orders collection
-                foreignField: "userId",  // field in the items collection
-                as: "user"
+            { '$lookup': {
+                'from': 'users',
+                'localField': 'userId',
+                'foreignField': 'userId',
+                'as': 'user'
             }},
             {'$sort': {'count': -1}},  # return them descending
             {'$limit': 10}
