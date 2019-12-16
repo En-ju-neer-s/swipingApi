@@ -15,7 +15,8 @@ db = client.swiper
 @upload_route.route('/upload', methods=['post'])
 def uploadRoute():
     # check if file is present and if it is json
-    if request.json['apiKey']:
+    print(request.json)
+    if db.apiKey.find({'apiKey': request.json['apiKey']}):
         if request.files['file'] and '.json' in request.files['file'].filename:
             fileInput = request.files['file'].read().decode('utf-8')  # Read file and make it string
 
@@ -46,4 +47,4 @@ def uploadRoute():
 
         return dumps({"succes": true, 'errorMessage': 'corect'}), 202
     else:
-        return dumps({"succes": False, 'errorMessage': 'Authentication not correct!'}), 301
+        return dumps({"succes": False, 'errorMessage': 'Api key expired get a new one'}), 301
