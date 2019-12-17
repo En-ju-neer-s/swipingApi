@@ -37,6 +37,7 @@ def uploadRoute():
                     if request.json['source'] and len(request.json['source']) > 0:  # Validation
                         article['source'] = request.json['source']
                     articles.append(article)  # append the article to a list of articles
+
                     # TODO ADD WHO UPLOADED IT
 
                 # upload the json to mongo

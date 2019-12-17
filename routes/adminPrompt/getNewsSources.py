@@ -10,6 +10,7 @@ db = client.swiper
 # TODO: ADD AUTHENTICATION
 @news_source_route.route('/newsSources', methods=['get', 'post'])
 def newsSources():
+    # TODO ADD WHO UPLOADED IT AND ADD API KEY
     # Return all articles
     if request.method == 'GET':
         return(dumps(db.newsProviders.find({})))
