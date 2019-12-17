@@ -14,17 +14,21 @@ def topUsers():
     if request.method == 'GET':
         topTen = collection.aggregate([
             {
+                '$lookup': {
+                    'from': 'users',
+                    'localField': 'userId',
+                    'foreignField': 'userId',
+                    'as': 'user'
+                }
+            },
+            {
                 '$group': {  # Group them together based on userId
                     '_id': '$userId',
-#                     'name': users.find( { 'userId': '$userId' }, { username: 1, _id: 0 } ),
+                    'username': {'$first': {'$arrayElemAt': ['$user.username', 0]}},
+                    #                     'name': users.find( { 'userId': '$userId' }, { username: 1, _id: 0 } ),
                     'count': {'$sum': 1}  # count per user
-                }},
-            { '$lookup': {
-                'from': 'users',
-                'localField': 'userId',
-                'foreignField': 'userId',
-                'as': 'user'
-            }},
+                }
+            },
             {'$sort': {'count': -1}},  # return them descending
             {'$limit': 10}
         ])
