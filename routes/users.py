@@ -13,6 +13,7 @@ users = db.users
 def topUsers():
     if request.method == 'GET':
         topTen = collection.aggregate([
+            # Do lookup to connect userIds
             {
                 '$lookup': {
                     'from': 'users',
@@ -24,6 +25,7 @@ def topUsers():
             {
                 '$group': {  # Group them together based on userId
                     '_id': '$userId',
+                    # It returns an array so get first element
                     'username': {'$first': {'$arrayElemAt': ['$user.username', 0]}},
                     #                     'name': users.find( { 'userId': '$userId' }, { username: 1, _id: 0 } ),
                     'count': {'$sum': 1}  # count per user
