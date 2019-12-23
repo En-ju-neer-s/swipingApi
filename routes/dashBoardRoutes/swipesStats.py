@@ -21,7 +21,7 @@ def swipesStatsGetter():
             }
         },
         {
-            '$project': {'title': 1, 'source': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'timestamp': 1, '_id': 0, 'binaryData.clickbait': 1}
+            '$project': {'title': 1, 'og-title': 1, 'source': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'timestamp': 1, '_id': 0, 'binaryData.clickbait': 1}
         }
     ])
 
