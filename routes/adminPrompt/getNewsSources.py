@@ -8,8 +8,11 @@ news_source_route = Blueprint('news_source_route', __name__)
 db = client.swiper
 
 # TODO: ADD AUTHENTICATION
-@news_source_route.route('/newsSources', methods=['get', 'post'])
+@news_source_route.route('/newsSources', methods=['get'])
 def newsSources():
+
+    # TODO ADD WHO UPLOADED IT AND ADD API KEY
+
     # Return all articles
     if request.method == 'GET':
         return(dumps(db.newsProviders.find({})))
