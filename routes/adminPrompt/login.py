@@ -31,10 +31,12 @@ def loginRoute():
         # Set collection
         collection = db.apiKey
         # Drop old indexes otherwise mongo will keep using the old ones
-        collection.drop_indexes()
+        # collection.drop_indexes()
 
-        collection.create_index("Index of this exprire", expireAfterSeconds=1200)
+        collection.create_index("apiKeyIndex", expireAfterSeconds=15*60)
         collection.insert_one({'apiKey': apiKey, 'user': request.json['username'], "inserted": datetime.utcnow()})
+
+        print(list(collection.index_information()))
 
         return dumps({'success': True, 'message': 'You are logged in', 'apiKey': apiKey}), 200
     else:
