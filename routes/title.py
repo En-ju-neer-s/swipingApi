@@ -1,3 +1,4 @@
+import math
 from flask import request, Blueprint, json
 from bson.json_util import dumps
 from .connection import client
@@ -30,15 +31,39 @@ def returnTitles():
                         }
                      }
                 ]))[0]['titleKeys']  # get only list of key
+                # Get all swipes
+                avergageSwipes = math.ceil(db.binary.find({}).count() / db.testTitles.find({}).count())
+                # avergageSwipes = 5 It can also be static
 
-                title = collectionTitles.aggregate([
-                    {'$match': {'primary_key': {'$nin': titlesSeen}}},
-                    {'$sample': {'size': 1}},
-                    {'$project': {'title': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'timestamp': 1, '_id': 0}}
-                ])
+                title = getTitle(avergageSwipes, titlesSeen)
+
             else:
                 title = collectionTitles.aggregate([{'$sample': {'size': 1}}, {'$project': {'title': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'og-title': 1, 'timestamp': 1, '_id': 0}}])
 
             return dumps(title), 200
         else:
             return 'id not filled', 403
+
+
+def getTitle(avgSwipe, titlesSeen):
+    title = collectionTitles.aggregate([  # Get the titles
+        {'$match': {'primary_key': {'$nin': titlesSeen}}},
+        # {'$match': {'primary_key': 'c6d2b0e632b3ee2d0a3675120db5a143'}}, test case
+        {'$sample': {'size': 1}},
+        {'$project': {'title': 1, 'description': 1, 'url': 1, 'primary_key': 1, 'timestamp': 1, '_id': 0}},
+        {
+            '$lookup': {
+                'from': "binary",
+                'localField': "primary_key",
+                'foreignField': "primaryKey",
+                'as': "swipeData"
+            }
+        }
+    ])
+    # Count the amount the amount of swipes to compare with average
+    for title in title:
+        print(len(title['swipeData']))
+        if len(title['swipeData']) > avgSwipe:
+            getTitle(avgSwipe, titlesSeen)
+        else:
+            return title
