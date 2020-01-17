@@ -28,7 +28,7 @@ def loginRoute():
         time = datetime.utcnow()
         apiKey = request.json['username'] + format(time.hour) + format(time.minute) + format(time.second) + format(time.microsecond)
 
-        # Set collection
+        # Set collection Mongo
         collection = db.apiKey
         # Drop old indexes otherwise mongo will keep using the old ones
         # collection.drop_indexes()
