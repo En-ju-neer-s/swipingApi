@@ -13,8 +13,7 @@ db = client.swiper
 @avgCalcRoute.route('/average', methods=['POST'])
 def avgChange():
 
-    if 1:
-        # if db.apiKey.find({'apiKey': request.form['apiKey']}).count() > 0:
+    if db.apiKey.find({'apiKey': request.form['apiKey']}).count() > 0:
         if request.json['calculate']:
             db.average.update(
                 {'_id': ObjectId("5e21a054546570923dfdb3c0")},
