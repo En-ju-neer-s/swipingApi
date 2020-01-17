@@ -16,13 +16,13 @@ def avgChange():
     if db.apiKey.find({'apiKey': request.form['apiKey']}).count() > 0:
         if request.json['calculate']:
             db.average.update(
-                {'_id': ObjectId("5e21a054546570923dfdb3c0")},
+                {'_id': ObjectId("5e21a12124aa14292ca51995")},
                 {'$set': {'calculate': True}}
             )
 
             if request.json['staticAverage']:
                 db.average.update(
-                    {'_id': ObjectId("5e21a054546570923dfdb3c0")},
+                    {'_id': ObjectId("5e21a12124aa14292ca51995")},
                     {'$set': {'staticAverage': request.json['staticAverage']}}
                 )
 
