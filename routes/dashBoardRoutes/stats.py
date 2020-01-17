@@ -1,6 +1,7 @@
 from flask import Blueprint
 from ..connection import client
 from bson.json_util import dumps
+import math
 
 stats_route = Blueprint('stats_route', __name__)  # set route
 
