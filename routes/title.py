@@ -10,6 +10,7 @@ db = client.swiper
 # get collectoins
 collectionTitles = db.testTitles
 binarySet = db.binary
+average = db.average
 
 
 @title_route.route('/', methods=['GET', 'POST'])
@@ -32,8 +33,14 @@ def returnTitles():
                      }
                 ]))[0]['titleKeys']  # get only list of key
                 # Get all swipes
-                avergageSwipes = math.ceil(db.binary.find({}).count() / db.testTitles.find({}).count())
-                # avergageSwipes = 5 It can also be static
+                averageData = average.find({})
+
+                for averageData in averageData:
+                    if averageData['calculate']:
+                        avergageSwipes = math.ceil(db.binary.find({}).count() / db.testTitles.find({}).count())
+                    else:
+                        avergageSwipes = averageData['staticAverage']
+                        pass
 
                 title = getTitle(avergageSwipes, titlesSeen)
 

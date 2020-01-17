@@ -17,6 +17,7 @@ from routes.dashBoardRoutes.swipesStats import swipesStats
 from routes.adminPrompt.uploadJson import upload_route
 from routes.adminPrompt.getNewsSources import news_source_route
 from routes.adminPrompt.login import login_route
+from routes.adminPrompt.avgCalculation import avgCalcRoute
 # Mongo imports
 from flask_pymongo import PyMongo  # connect to mongo DB
 from flask_cors import CORS
@@ -46,6 +47,7 @@ app.register_blueprint(news_source_route, url_prefix='/dashboard')
 # Admin routes
 app.register_blueprint(upload_route, url_prefix='/admin')
 app.register_blueprint(login_route, url_prefix='/admin')
+app.register_blueprint(avgCalcRoute, url_prefix='/admin')
 
 # initial route
 @app.route('/')

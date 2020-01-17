@@ -16,11 +16,21 @@ def stats():
     allSwipes = db.binary.find({}).count()
     # average swipes a person
     averageSwipes = int(allSwipes / allUsers)
+    # Get average swipes based on server
+    averageData = db.average.find({})
+
+    for averageData in averageData:
+        if averageData['calculate']:
+            avergageSwipesServer = math.ceil(db.binary.find({}).count() / db.testTitles.find({}).count())
+        else:
+            avergageSwipesServer = averageData['staticAverage']
+        pass
 
     stats = {
         'allUser': allUsers,
         'allSwipes': allSwipes,
-        'averageSwipes': averageSwipes
+        'averageSwipes': averageSwipes,
+        'calculatedAverage': avergageSwipesServer
     }
 
     return stats
